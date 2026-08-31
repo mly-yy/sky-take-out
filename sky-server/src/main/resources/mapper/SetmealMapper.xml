@@ -8,6 +8,12 @@
         (category_id, name, price, description, image, create_time, update_time, create_user, update_user)
         VALUES(#{categoryId},#{name},#{price},#{description},#{image},#{createTime},#{updateTime},#{createUser},#{updateUser})
     </insert>
+    <delete id="deleteById">
+        delete from setmeal where id in
+        <foreach collection="ids" open="(" separator="," close=")" item="id">
+            #{id}
+        </foreach>
+    </delete>
     <select id="pageQuery" resultType="com.sky.vo.SetmealVO">
         select s.*,c.name as categoryName
         from setmeal s
