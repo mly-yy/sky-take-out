@@ -8,6 +8,18 @@
         (category_id, name, price, description, image, create_time, update_time, create_user, update_user)
         VALUES(#{categoryId},#{name},#{price},#{description},#{image},#{createTime},#{updateTime},#{createUser},#{updateUser})
     </insert>
+    <update id="update">
+
+            update setmeal
+            set name = #{name},
+                price = #{price},
+                category_id = #{categoryId},
+                status = #{status},
+                description = #{description},
+                image = #{image}
+            where id = #{id}
+
+    </update>
     <delete id="deleteById">
         delete from setmeal where id in
         <foreach collection="ids" open="(" separator="," close=")" item="id">
